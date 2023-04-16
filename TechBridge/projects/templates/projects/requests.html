@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block breadcrumb %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Projects</li>
+<li class="breadcrumb-item active">Views</li>
+{% endblock breadcrumb%}
+{% block content %}
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>{{ projects.count }} Pending Requests</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% for project in projects %}
+                <div class="col-12 col-md-6 col-lg-4">
+                <div class="card mx-2">
+                    <div class="card-body">
+                        <div class="h4 m-0">
+                            {{ project.name }}
+                        </div>
+                        <div>Requested by <b>{{ project.requester.username }}</b></div>
+                        <small class="text-muted">{{ project.description|truncatechars:60 }}</small>
+                        {% if user.is_authenticated and user.is_member %}
+                        <a href="{% url 'projects:new-project' project.id %}"><button class="btn btn-sm btn-success">Start Project</button></a>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}

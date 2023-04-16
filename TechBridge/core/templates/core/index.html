@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active">Home</li>
+{% endblock breadcrumb%}
+
+{% block content %}
+<div class="container-fluid">
+  <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
+    <div class="row">
+    <div class="col-12">
+      <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> Main info
+        <div class="card-actions">
+          <a href="" target="_blank">
+            <small class="text-muted">docs</small>
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="jumbotron bg-white">
+          <h1 class="display-4">Welcome to TechBridge.</h1>
+          <p class="lead">Empowering youth to change the world</p>
+          <hr class="my-4">
+          {% if not user.is_authenticated %}
+          <p>Get started by creating a user account to request an application/website!</p>
+          <p>Or if you are a high school student, create a member account to start helping out others!</p>
+          <div class="">
+            <a href="{% url 'core:login' %}"><button class="btn btn-sm btn-primary">Login</button></a>
+            <a href="{% url 'register:new-user' %}"><button class="btn btn-sm btn-success">Register as user</button></a>
+            <a href="{% url 'register:new-member' %}"><button class="btn btn-sm btn-warning">Register as member</button></a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
