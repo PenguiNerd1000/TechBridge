@@ -27,7 +27,7 @@ def user_register(request):
             'form' : form,
         }
         return render(request, 'register/reg_form.html', context)
-    
+
 def member_register(request):
     if request.method == 'POST':
         form = MemberRegistrationForm(request.POST)
@@ -80,7 +80,7 @@ def user_profile(request):
             return render(request, 'register/profile.html', context)
     else:
         img_form = ProfilePictureForm()
-        context = {'img_form' : img_form }
+        context = {'img_form' : img_form}
         return render(request, 'register/profile.html', context)
 
 def invites(request):
