@@ -56,7 +56,7 @@ def newTask(request):
             'form': form,
         }
         return render(request,'projects/new_task.html', context)
-    
+
 def newProjectRequest(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('core:login'))
@@ -105,7 +105,7 @@ def newProject(request):
             'form': form,
         }
         return render(request,'projects/new_project.html', context)
-    
+
 def newProjectFromRequest(request, id):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('core:login'))
@@ -124,6 +124,8 @@ def newProjectFromRequest(request, id):
         else:
             return render(request, 'projects/new_project.html', context)
     else:
+        tmp = ProjectRequest.objects.filter(id=id)
+        tmp.update(started = True)
         tmp = ProjectRequest.objects.get(id=id)
         form = ProjectRegistrationForm(initial={'name':tmp.name, 'description':tmp.description, 'dead_line':tmp.dead_line, 'requester': tmp.requester})
         # form.name = tmp.name
