@@ -50,7 +50,9 @@ No matter the outcome of the hackathon, we are determined to create this non-pro
 6. Empower the new generation to have an positive impact on the world.
 
 # Running Locally
-```python3 -m venv venv
+```
+python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-./run.sh```
+./run.sh
+```
